@@ -1,0 +1,116 @@
+#product-details {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+.animate {
+    width: 530px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 2;
+    left: 35%;
+    bottom: 5%;
+    padding: 15px;
+    animation: fadeIn 0.4s ease-in;
+
+    .form-control{
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 0.5;
+        padding: 0 5px;
+        border-bottom: 1px solid #aaaaaa;
+    }
+    label{
+        font-size: 10px;
+        line-height: 0.5;
+        color: #aaaaaa;
+    }
+    .img-size{
+        width: 250px;
+        height:250px;
+    }
+
+    .upload-img-size{
+        width:100%;
+        height:250px;
+        background-color: rgba(0, 0, 0, 0.2)
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .animate {
+        width: 100%;
+        left:0;
+        bottom: 5%;
+        padding: 15px;
+        animation: fadeIn 0.4s ease-in;
+
+        .img-size{
+            width: 150px;
+            height:150px
+        }
+
+        .upload-img-size{
+            height:150px;
+        }
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .animate {
+        width: 100%;
+        left:0;
+        bottom: 0;
+        padding: 15px;
+        animation: fadeIn 0.4s ease-in;
+
+        .img-size{
+            width: 150px;
+            height:150px
+        }
+
+        .upload-img-size{
+            height: 150px;
+        }
+    }
+}
+
+// IPAD MEDIA QUERY BELOW
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .animate {
+        left:15%;
+    }
+}
+
+// IPAD PRO MEDIA QUERY BELOW
+@media screen and (min-width:1024px) and (max-width:1199px) {
+    .animate {
+        left:25%;
+        bottom: 40%;
+    }
+    @keyframes fadeIn {
+        from {
+            bottom: 0;
+        }
+    
+        to {
+            bottom: 10%;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        bottom: -100%;
+    }
+
+    to {
+        bottom: 5%;
+    }
+}

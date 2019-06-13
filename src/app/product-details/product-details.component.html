@@ -1,0 +1,88 @@
+<div id="product-details"
+    [ngStyle]="{'filter': showProductDetails ? 'blur(5px)' : 'blur(0px)','position': showProductDetails ? 'relative' : 'relative' , 'left': showProductDetails ? 0 : 0  , 'right': showProductDetails ? 0 : 0  }">
+    <div class="wrapper">
+        <div class="pt-5">
+            <h4 class="text-daek text-center">Add details for your Product</h4>
+        </div>
+        <div class="py-2">
+            <p class="mb-0 text-secondary text-center">Unpriced products are hidden. You can edit them later</p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center flex-wrap py-2 mx-4">
+            <div class="m-3" *ngFor="let product of products" style="cursor:pointer">
+                <app-card-tile [product]="product" (onSelectProduct)="showSelectedProduct($event)"
+                    [selectedProduct]="selectedProduct">
+                </app-card-tile>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="animate" *ngIf="showProductDetails">
+    <div class="d-flex justify-content-end pb-2">
+        <div (click)="showSelectedProduct()" style="cursor:pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none
+                        }
+
+                        .cls-2 {
+                            fill: #7b8ba7
+                        }
+
+                    </style>
+                </defs>
+                <g id="close">
+                    <path id="Path_136" d="M0 0h24v24H0z" class="cls-1" data-name="Path 136" />
+                    <path id="Path_137"
+                        d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 0 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"
+                        class="cls-2" data-name="Path 137" />
+                </g>
+            </svg>
+        </div>
+    </div>
+    <div class="d-flex align-items-start">
+        <div class="flex-fill pl-2">
+            <img src="{{selectedProduct.selectedImage}}" alt="" class="img-size">
+            <form>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="mb-0" for="productTitle">Product Title</label>
+                    <input type="text" class="form-control" id="productTitle" name="productTitle" ngModel
+                        [(ngModel)]="selectedProduct.productTitle">
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="mb-0" for="productPrice">Price</label>
+                    <input type="text" class="form-control" id="productPrice" name="productPrice" ngModel
+                        [(ngModel)]="selectedProduct.productPrice">
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="mb-0" for="productOfferPrice">Offer Price</label>
+                    <input type="text" class="form-control" id="productOfferPrice" name="productOfferPrice" ngModel
+                        [(ngModel)]="selectedProduct.productOfferPrice">
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="mb-0" for="shippingCost">Shipping Cost</label>
+                    <input type="text" class="form-control" id="shippingCost" name="shippingCost" ngModel
+                        [(ngModel)]="selectedProduct.shippingCost">
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="mb-0" for="totalInventory">Inventory</label>
+                    <input type="text" class="form-control" id="totalInventory" name="totalInventory" ngModel
+                        [(ngModel)]="selectedProduct.totalInventory">
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="mb-0" for="productDescription">Description</label>
+                    <input type="text" class="form-control" id="productDescription" name="productDescription" ngModel
+                        [(ngModel)]="selectedProduct.productDescription">
+                </div>
+            </form>
+        </div>
+        <div class="flex-fill pl-2">
+            <div class="upload-img-size"></div>
+            <div class="py-2">
+                <p class="mb-0 text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
+                    repudiandae?</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div id="card-tile" (click)="onEditCard()">
+    <div class="wrapper">
+        <div [ngStyle]="{'border' : (selectedProduct === product) ? '2px solid red' : '0'}">
+            <img src="{{product.selectedImage}}" alt="" width="250px" height="250px">
+            <div class="py-2 px-3">
+                <div class="py-1">
+                    <p class="mb-0 text-secondary" style="font-size:14px">{{product.productTitle}}</p>
+                </div>
+                <hr class="m-0">
+                <div class="py-1">
+                    <p class="mb-0 text-secondary" style="font-size:14px">{{product.productPrice}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,109 @@
+{
+   "products": [
+    {
+        "productId":1,
+        "productTitle":"LP Shirt",
+        "productPrice":3000,
+        "productOfferPrice":2500,
+        "shippingCost":20,
+        "totalInventory":4,
+        "productDescription":"Fine cotton striped shirt",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/2313192/pexels-photo-2313192.jpeg"
+        ]
+    },
+    {
+        "productId":2,
+        "productTitle":"LP T-Shirt",
+        "productPrice":1500,
+        "productOfferPrice":1200,
+        "shippingCost":10,
+        "totalInventory":2,
+        "productDescription":"Fine cotton striped T-shirt",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg"
+        ]
+    },
+    {
+        "productId":3,
+        "productTitle":"Denim Jeans",
+        "productPrice":2000,
+        "productOfferPrice":1500,
+        "shippingCost":10,
+        "totalInventory":6,
+        "productDescription":"sdas cias casc aisuc asiuc asic asic sa",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg"
+        ]
+    },
+    {
+        "productId":4,
+        "productTitle":"LP Shirt",
+        "productPrice":3000,
+        "productOfferPrice":2500,
+        "shippingCost":0,
+        "totalInventory":9,
+        "productDescription":"saca scasascwdweb9fbwef weif weufw eifuew",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg"
+        ]
+    },
+    {
+        "productId":5,
+        "productTitle":"Denim Jacket",
+        "productPrice":4000,
+        "productOfferPrice":3000,
+        "shippingCost":50,
+        "totalInventory":6,
+        "productDescription":"asc ascasic asoic asic aos coias coisa coias ca",
+        "selectedImage" : "", 
+        "images" :[
+            "https://images.pexels.com/photos/936229/pexels-photo-936229.jpeg"
+        ]
+    },
+    {
+        "productId":6,
+        "productTitle":"LP Shirt",
+        "productPrice":3000,
+        "productOfferPrice":2500,
+        "shippingCost":0,
+        "totalInventory":9,
+        "productDescription":"saca scasascwdweb9fbwef weif weufw eifuew",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg"
+        ]
+    },
+    {
+        "productId":7,
+        "productTitle":"LP Shirt",
+        "productPrice":3000,
+        "productOfferPrice":2500,
+        "shippingCost":20,
+        "totalInventory":4,
+        "productDescription":"Fine cotton striped shirt",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/2313192/pexels-photo-2313192.jpeg"
+        ]
+    },
+    {
+        "productId":8,
+        "productTitle":"Denim Jeans",
+        "productPrice":2000,
+        "productOfferPrice":1500,
+        "shippingCost":10,
+        "totalInventory":6,
+        "productDescription":"sdas cias casc aisuc asiuc asic asic sa",
+        "selectedImage" : "",
+        "images" :[
+            "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg"
+        ]
+    }
+   ] 
+}
+
