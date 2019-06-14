@@ -126,7 +126,8 @@ export class ProductDetailsComponent implements OnInit {
             this.selectedProductImages = this.selectedProduct.images.filter(image => image != this.selectedProduct.selectedImage);
             this.showError = false;
         } else {
-            this.showError = true;
+			this.showError = true;
+			form.reset();
         }
     }
     onSelectImage(image: string) {

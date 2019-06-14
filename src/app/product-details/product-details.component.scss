@@ -8,6 +8,14 @@ input:focus{
     box-shadow: none;
 }
 
+.valid::-webkit-input-placeholder {
+    color: #aaaaaa;
+}
+
+.not-valid::-webkit-input-placeholder {
+    color: #ff0000;
+}
+
 .animate {
     width: 530px;
     background-color: #fff;
@@ -20,12 +28,8 @@ input:focus{
     animation: fadeIn 0.4s ease-in;
     -webkit-animation: fadeIn 0.4s ease-in;
 
-    .valid::-webkit-input-placeholder {
-        color: #aaaaaa;
-    }
-    
-    .not-valid::-webkit-input-placeholder {
-        color: #ff0000;
+    .image{
+        height: 240px;
     }
 
     .educational-text{
@@ -88,6 +92,11 @@ input:focus{
         animation: fadeIn 0.4s ease-in;
         -webkit-animation: fadeIn 0.4s ease-in;
 
+        .image{
+            width: 165px;
+            height: 150px;
+        }
+
         .img-size{
             width: 150px;
             height:150px
@@ -95,6 +104,20 @@ input:focus{
 
         .upload-img-size{
             height:150px;
+        }
+    }
+    .animate-left{
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        padding: 15px;
+    }
+    @keyframes fadeInLeft{
+        from{
+            left: 100%;
+        }
+        to{
+            left: 0;
         }
     }
 }
@@ -109,6 +132,11 @@ input:focus{
         animation: fadeIn 0.4s ease-in;
         -webkit-animation: fadeIn 0.4s ease-in;
 
+        .image{
+            width: 165px;
+            height: 150px;
+        }
+
         .img-size{
             width: 150px;
             height:150px
@@ -118,12 +146,40 @@ input:focus{
             height: 150px;
         }
     }
+    .animate-left{
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        padding: 15px;
+    }
+    @keyframes fadeInLeft{
+        from{
+            left: 100%;
+        }
+        to{
+            left: 0;
+        }
+    }
 }
 
 // IPAD MEDIA QUERY BELOW
 @media screen and (min-width:768px) and (max-width:1023px) {
     .animate {
         left:15%;
+    }
+    .animate-left{
+        width: 530px;
+        left: 15%;
+        bottom: 45%;
+        padding: 15px;
+    }
+    @keyframes fadeInLeft{
+        from{
+            left: 100%;
+        }
+        to{
+            left: 15%;
+        }
     }
 }
 
@@ -132,6 +188,20 @@ input:focus{
     .animate {
         left:25%;
         bottom: 20%;
+    }
+    .animate-left{
+        width: 530px;
+        left: 25%;
+        bottom: 45%;
+        padding: 15px;
+    }
+    @keyframes fadeInLeft{
+        from{
+            left: 100%;
+        }
+        to{
+            left: 25%;
+        }
     }
     @keyframes fadeIn {
         from {

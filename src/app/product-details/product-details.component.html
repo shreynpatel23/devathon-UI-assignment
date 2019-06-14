@@ -95,7 +95,7 @@
                     [ngStyle]="{'background-color' : (selectedProduct.images.length === 1) ? 'rgba(0, 0, 0, 0.2)' : '#fff'}">
                     <div *ngIf="selectedProduct.images.length === 1" (click)="uploadImage()" style="cursor:pointer">
                         <img src="https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg" alt=""
-                            height="240px">
+                            class="image">
                     </div>
                     <div *ngIf="selectedProduct.images.length > 1">
                         <div class="d-flex align-items-center justify-content-center flex-wrap py-2">
@@ -263,12 +263,12 @@
     <form (ngSubmit)="onAddNewImage(f1)" #f1="ngForm">
         <div class="p-2">
             <div class="form-group" style="margin-bottom:5px;">
-                <label for="imageURL">Enter the Image Url</label>
-                <input autocomplete="off" type="text" class="form-control" id="imageURL" name="imageURL" ngModel
+                <label for="imageURL"
+                [ngStyle]="{'color' : (imageURL.errors && (imageURL.dirty || imageURL.touched) || showError) ? '#ff0000' : '#7b8ba7' }">Enter the Image Url</label>
+                <input autocomplete="off" type="text" class="form-control" id="imageURL" name="imageURL" ngModel #imageURL="ngModel"
+                    [ngClass]="{'not-valid':(imageURL.errors && (imageURL.dirty || imageURL.touched) || showError) , 'valid': !(imageURL.errors && (imageURL.dirty || imageURL.touched) || showError)}"
+                    [placeholder]="(imageURL.errors && (imageURL.dirty || imageURL.touched) || showError) ? 'Please give a Valid URL': 'https://images/photos/name.jpeg'"
                     required>
-            </div>
-            <div class="py-1" *ngIf="showError">
-                <p class="mb-0 text-danger" style="font-size:12px;">Please enter a valid Image URL</p>
             </div>
             <div class="py-2">
                 <div class="d-flex align-items-center justify-content-center">
