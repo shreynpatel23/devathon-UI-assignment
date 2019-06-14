@@ -63,7 +63,6 @@ export class ProductDetailsComponent implements OnInit {
        form.value.productDescription === '' || form.value.productDescription.length <0 ||
        form.value.productOfferPrice === '' || form.value.productOfferPrice.length <0 ||
        form.value.shippingCost === '' || form.value.shippingCost.length <0){
-         console.log('error');
         this.showError = true;
     } else{
       this.showError =false;
