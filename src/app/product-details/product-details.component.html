@@ -19,9 +19,7 @@
 <div class="animate" *ngIf="showProductDetails" [ngStyle]="{'filter': addImage ? 'blur(5px)' : 'blur(0px)'}">
     <div class="d-flex align-items-center pb-2">
         <div class="px-2" *ngIf="showError">
-            <p class="mb-0 text-danger" style="font-size:12px">
-                please fill out all the details
-            </p>
+            <p class="mb-0 text-danger" style="font-size:12px">{{errorMessage}}</p>
         </div>
         <div class="px-2 ml-auto">
                 <div (click)="closeSelectProduct()" style="cursor:pointer">
@@ -62,7 +60,7 @@
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productPrice">Price</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productPrice" name="productPrice" required
+                    <input autocomplete="off" type="number" class="form-control" id="productPrice" name="productPrice" required
                         #price="ngModel"
                         [ngClass]="{'not-valid':(price.errors && (price.dirty || price.touched)) , 'valid': !(price.errors && (price.dirty || price.touched))}"
                         [placeholder]="(price.errors && (price.dirty || price.touched)) ? 'Please give Price': 'Price'"
@@ -70,14 +68,14 @@
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productOfferPrice">Offer Price</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productOfferPrice" required #offerPrice="ngModel"
+                    <input autocomplete="off" type="number" class="form-control" id="productOfferPrice" required #offerPrice="ngModel"
                         [ngClass]="{'not-valid':(offerPrice.errors && (offerPrice.dirty || offerPrice.touched)) , 'valid': !(offerPrice.errors && (offerPrice.dirty || offerPrice.touched))}"
                         [placeholder]="(offerPrice.errors && (offerPrice.dirty || offerPrice.touched)) ? 'Please provide Offer Price': 'Offer Price'"
                         name="productOfferPrice" ngModel [(ngModel)]="selectedProduct.productOfferPrice">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="shippingCost">Shipping Cost</label>
-                    <input autocomplete="off" type="text" class="form-control" id="shippingCost" name="shippingCost" required
+                    <input autocomplete="off" type="number" class="form-control" id="shippingCost" name="shippingCost" required
                         #shippingCost="ngModel"
                         [ngClass]="{'not-valid':(shippingCost.errors && (shippingCost.dirty || shippingCost.touched)) , 'valid': !(shippingCost.errors && (shippingCost.dirty || shippingCost.touched))}"
                         [placeholder]="(shippingCost.errors && (shippingCost.dirty || shippingCost.touched)) ? 'Please provide Shipping Cost': 'Shipping Cost'"
@@ -88,7 +86,7 @@
                     <select class="form-control" id="totalInventory" name="totalInventory" ngModel #inventory
                         (change)="onSelectInventory($event.target.value)" required>
                         <option value="">--Select Inventory--</option>
-                        <option *ngFor="let inventory of totalInventory" [value]="inventory">{{inventory}}</option>
+                        <option *ngFor="let inventory of totalInventory" [value]="selectedProduct.totalInventory">{{inventory}}</option>
                     </select>
                 </div>
             </div>
