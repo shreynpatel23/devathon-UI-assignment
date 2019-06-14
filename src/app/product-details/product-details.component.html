@@ -113,12 +113,12 @@
                 <div style="height:300px;overflow-y:scroll">
                     <div *ngFor="let option of selectedProduct.options; let i=index">
                         <div class="form-group" style="margin-bottom:5px">
-                            <input autocomplete="off" type="text" class="form-control" id="optionName" name="name{{i}}"
+                            <input autocomplete="off" type="text" class="form-control" id="optionName{{i}}" name="name{{i}}"
                                 ngModel [(ngModel)]="option.optionName" placeholder="Give a Option name here">
-                            <div *ngFor="let optionValue of selectedProduct.options[i].optionValues; let j=index">
-                                <input autocomplete="off" type="text" class="form-control" id="optionValue{{j}}"
-                                    name="{{i}}optionValue{{j}}" ngModel [(ngModel)]="optionValue[j]"
-                                    placeholder="Option {{j+1}}">
+                            <div *ngFor="let op of option.optionValues; let j=index">
+                                <input autocomplete="off" type="text" class="form-control"  ngModel
+                                    name="{{i}}optionValue{{j}}" [(ngModel)]="op.optionValue"
+                                    placeholder="Variation {{j+1}}">
                             </div>
                             <div class="d-flex align-items-center py-2" (click)="addOptionValues(i)"
                                 style="cursor:pointer">

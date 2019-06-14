@@ -7,7 +7,8 @@ import {
 } from '../services/product.service';
 import {
     Product,
-    Options
+    Options,
+	OptionValue
 } from '../model/product.model';
 import {
     NgForm
@@ -43,7 +44,8 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     onSelectProduct(product: Product) {
-        this.selectedProduct = product;
+		this.selectedProduct = product;
+		console.log(this.selectedProduct)
         this.selectedProductImages = product.images.filter(image => image != this.selectedProduct.selectedImage);
         this.showProductDetails = !this.showProductDetails;
     }
@@ -57,12 +59,14 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     addMoreOptions() {
-        let newOption = new Options('', ['']);
+		let newOption = new Options();
+		newOption.optionName = '';
+		newOption.optionValues = [];
         this.selectedProduct.options.push(newOption);
     }
 
     addOptionValues(id: number) {
-        this.selectedProduct.options[id].optionValues.push('');
+        this.selectedProduct.options[id].optionValues.push(new OptionValue());
     }
 
     onSelectInventory(number: number) {
@@ -70,6 +74,7 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     updateProductDetails(form: NgForm) {
+		console.log(this.selectedProduct);
         if (form.value.productTitle === '' || form.value.productTitle.length < 0) {
             this.showError = true;
 			this.errorMessage = 'PRODUCT TITLE CANNOT BE EMPTY';
@@ -107,7 +112,10 @@ export class ProductDetailsComponent implements OnInit {
 			this.selectedProduct.shippingCost = form.value.shippingCost;
 			this.selectedProduct.totalInventory = form.value.totalInventory;
         }
-    }
+	}
+	getOptionValues(e,i,j) {
+		this.selectedProduct.options[i].optionValues[j]= e.target.value;
+	}
     uploadImage() {
         this.addImage = !this.addImage;
         if (this.showError === true) {
@@ -116,11 +124,7 @@ export class ProductDetailsComponent implements OnInit {
     }
     onAddNewImage(form: NgForm) {
         let url = form.value.imageURL;
-        let jpeg = 'jpeg';
-        let png = 'png';
-        let tif = 'tif';
-        let gif = 'gif';
-        if (url.includes(jpeg) || url.includes(png) || url.includes(tif) || url.includes(gif)) {
+        if (url.includes('jpeg') || url.includes('png') || url.includes('tif') || url.includes('gif')) {
             this.addImage = false;
             this.selectedProduct.images.push(url);
             this.selectedProductImages = this.selectedProduct.images.filter(image => image != this.selectedProduct.selectedImage);

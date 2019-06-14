@@ -13,10 +13,12 @@ export class Product{
 
 export class Options{
     optionName:string;
-    optionValues:string[] = [];
-    constructor(optionName:string , optionValues:string[]){
-        this.optionName = optionName;
-        this.optionValues = optionValues;
-    }
+    optionValues:OptionValue[] = [];
+    constructor(){}
 }
 
+export class OptionValue {
+    constructor() {}
+    optionValue:string;
+
+}
