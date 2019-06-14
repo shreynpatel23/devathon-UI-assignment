@@ -80,7 +80,7 @@
                     </div>
                     <div *ngIf="selectedProduct.images.length > 1">
                         <div class="d-flex align-items-center justify-content-center flex-wrap py-2">
-                            <div class="p-1" *ngFor="let image of selectedProductImages">
+                            <div class="p-1 hover" *ngFor="let image of selectedProductImages">
                                 <img src="{{image}}" alt="" height="60px" width="60px" (click)="onSelectImage(image)"
                                     style="cursor:pointer">
                             </div>
