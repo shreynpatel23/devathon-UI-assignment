@@ -17,28 +17,35 @@
     </div>
 </div>
 <div class="animate" *ngIf="showProductDetails" [ngStyle]="{'filter': addImage ? 'blur(5px)' : 'blur(0px)'}">
-    <div class="d-flex justify-content-end pb-2">
-        <div (click)="closeSelectProduct()" style="cursor:pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <defs>
-                    <style>
-                        .cls-1 {
-                            fill: none
-                        }
-
-                        .cross-cls-2 {
-                            fill: #7b8ba7
-                        }
-
-                    </style>
-                </defs>
-                <g id="close">
-                    <path id="Path_136" d="M0 0h24v24H0z" class="cls-1" data-name="Path 136" />
-                    <path id="Path_137"
-                        d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 0 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"
-                        class="cross-cls-2" data-name="Path 137" />
-                </g>
-            </svg>
+    <div class="d-flex align-items-center pb-2">
+        <div class="px-2" *ngIf="showError">
+            <p class="mb-0 text-danger" style="font-size:12px">
+                please fill out all the details
+            </p>
+        </div>
+        <div class="px-2 ml-auto">
+                <div (click)="closeSelectProduct()" style="cursor:pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: none
+                                    }
+            
+                                    .cross-cls-2 {
+                                        fill: #7b8ba7
+                                    }
+            
+                                </style>
+                            </defs>
+                            <g id="close">
+                                <path id="Path_136" d="M0 0h24v24H0z" class="cls-1" data-name="Path 136" />
+                                <path id="Path_137"
+                                    d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 0 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"
+                                    class="cross-cls-2" data-name="Path 137" />
+                            </g>
+                        </svg>
+                    </div>
         </div>
     </div>
     <form (ngSubmit)="updateProductDetails(f)" #f="ngForm">
@@ -47,28 +54,42 @@
                 <img src="{{selectedProduct.selectedImage}}" alt="" class="img-size">
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productTitle">Product Title</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productTitle" name="productTitle"
+                    <input autocomplete="off" type="text" class="form-control" id="productTitle" name="productTitle" required
+                        #title="ngModel"
+                        [ngClass]="{'not-valid':(title.errors && (title.dirty || title.touched)) , 'valid': !(title.errors && (title.dirty || title.touched))}"
+                        [placeholder]="(title.errors && (title.dirty || title.touched)) ? 'Please give a Product Title': 'Title'"
                         ngModel [(ngModel)]="selectedProduct.productTitle">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productPrice">Price</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productPrice" name="productPrice"
+                    <input autocomplete="off" type="text" class="form-control" id="productPrice" name="productPrice" required
+                        #price="ngModel"
+                        [ngClass]="{'not-valid':(price.errors && (price.dirty || price.touched)) , 'valid': !(price.errors && (price.dirty || price.touched))}"
+                        [placeholder]="(price.errors && (price.dirty || price.touched)) ? 'Please give Price': 'Price'"
                         ngModel [(ngModel)]="selectedProduct.productPrice">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productOfferPrice">Offer Price</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productOfferPrice"
+                    <input autocomplete="off" type="text" class="form-control" id="productOfferPrice" required #offerPrice="ngModel"
+                        [ngClass]="{'not-valid':(offerPrice.errors && (offerPrice.dirty || offerPrice.touched)) , 'valid': !(offerPrice.errors && (offerPrice.dirty || offerPrice.touched))}"
+                        [placeholder]="(offerPrice.errors && (offerPrice.dirty || offerPrice.touched)) ? 'Please provide Offer Price': 'Offer Price'"
                         name="productOfferPrice" ngModel [(ngModel)]="selectedProduct.productOfferPrice">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="shippingCost">Shipping Cost</label>
-                    <input autocomplete="off" type="text" class="form-control" id="shippingCost" name="shippingCost"
+                    <input autocomplete="off" type="text" class="form-control" id="shippingCost" name="shippingCost" required
+                        #shippingCost="ngModel"
+                        [ngClass]="{'not-valid':(shippingCost.errors && (shippingCost.dirty || shippingCost.touched)) , 'valid': !(shippingCost.errors && (shippingCost.dirty || shippingCost.touched))}"
+                        [placeholder]="(shippingCost.errors && (shippingCost.dirty || shippingCost.touched)) ? 'Please provide Shipping Cost': 'Shipping Cost'"
                         ngModel [(ngModel)]="selectedProduct.shippingCost">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="totalInventory">Inventory</label>
-                    <input autocomplete="off" type="text" class="form-control" id="totalInventory" name="totalInventory"
-                        ngModel [(ngModel)]="selectedProduct.totalInventory">
+                    <select class="form-control" id="totalInventory" name="totalInventory" ngModel #inventory
+                        (change)="onSelectInventory($event.target.value)" required>
+                        <option value="">--Select Inventory--</option>
+                        <option *ngFor="let inventory of totalInventory" [value]="inventory">{{inventory}}</option>
+                    </select>
                 </div>
             </div>
             <div class="flex-fill pl-2">
@@ -210,7 +231,9 @@
             <div class="flex-grow-1 pl-2">
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productDescription">Description</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productDescription"
+                    <input autocomplete="off" type="text" class="form-control" required id="productDescription" #description="ngModel"
+                        [ngClass]="{'not-valid':(description.errors && (description.dirty || description.touched)) , 'valid': !(description.errors && (description.dirty || description.touched))}"
+                        [placeholder]="(description.errors && (description.dirty || description.touched)) ? 'Please provide valid Description': 'Description'"
                         name="productDescription" ngModel [(ngModel)]="selectedProduct.productDescription">
                 </div>
             </div>

@@ -20,6 +20,14 @@ input:focus{
     animation: fadeIn 0.4s ease-in;
     -webkit-animation: fadeIn 0.4s ease-in;
 
+    .valid::-webkit-input-placeholder {
+        color: #aaaaaa;
+    }
+    
+    .not-valid::-webkit-input-placeholder {
+        color: #ff0000;
+    }
+
     .educational-text{
         font-size: 12px;
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product, Options } from '../model/product.model';
 import { NgForm } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-product-details',
@@ -16,6 +17,9 @@ export class ProductDetailsComponent implements OnInit {
   addImage:boolean = false;
   selectedProductImages:string[];
   showError:boolean = false;
+
+  totalInventory = [1,2,3,4,5,6,7,8,9,10];
+
   constructor(private productService:ProductService) {}
   ngOnInit() {
     this.productService.getData().subscribe(
@@ -49,15 +53,27 @@ export class ProductDetailsComponent implements OnInit {
     this.selectedProduct.options[id].optionValues.push('');
   }
 
-  updateProductDetails(form:NgForm){
-    this.showProductDetails = false;
-    this.selectedProduct.productTitle = form.value.productTitle;
-    this.selectedProduct.productPrice = form.value.productPrice;
-    this.selectedProduct.productDescription = form.value.productDescription;
-    this.selectedProduct.productOfferPrice = form.value.productOfferPrice;
-    this.selectedProduct.totalInventory = form.value.totalInventory;
-    this.selectedProduct.shippingCost = form.value.shippingCost;
+  onSelectInventory(number:number){
+    this.selectedProduct.totalInventory = number;
+  }
 
+  updateProductDetails(form:NgForm){
+    if(form.value.productTitle === '' || form.value.productTitle.length <0 ||
+       form.value.productPrice === '' || form.value.productPrice.length <0 ||
+       form.value.productDescription === '' || form.value.productDescription.length <0 ||
+       form.value.productOfferPrice === '' || form.value.productOfferPrice.length <0 ||
+       form.value.shippingCost === '' || form.value.shippingCost.length <0){
+         console.log('error');
+        this.showError = true;
+    } else{
+      this.showError =false;
+      this.showProductDetails = false;
+      this.selectedProduct.productTitle = form.value.productTitle;
+      this.selectedProduct.productPrice = form.value.productPrice;
+      this.selectedProduct.productDescription = form.value.productDescription;
+      this.selectedProduct.productOfferPrice = form.value.productOfferPrice;
+      this.selectedProduct.shippingCost = form.value.shippingCost;
+    }
   }
   uploadImage(){
     this.addImage = !this.addImage;
