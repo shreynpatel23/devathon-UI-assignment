@@ -16,8 +16,7 @@
         </div>
     </div>
 </div>
-<div class="animate" *ngIf="showProductDetails"
-[ngStyle]="{'filter': addImage ? 'blur(5px)' : 'blur(0px)'}">
+<div class="animate" *ngIf="showProductDetails" [ngStyle]="{'filter': addImage ? 'blur(5px)' : 'blur(0px)'}">
     <div class="d-flex justify-content-end pb-2">
         <div (click)="closeSelectProduct()" style="cursor:pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -48,54 +47,55 @@
                 <img src="{{selectedProduct.selectedImage}}" alt="" class="img-size">
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productTitle">Product Title</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productTitle" name="productTitle" ngModel
-                        [(ngModel)]="selectedProduct.productTitle">
+                    <input autocomplete="off" type="text" class="form-control" id="productTitle" name="productTitle"
+                        ngModel [(ngModel)]="selectedProduct.productTitle">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productPrice">Price</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productPrice" name="productPrice" ngModel
-                        [(ngModel)]="selectedProduct.productPrice">
+                    <input autocomplete="off" type="text" class="form-control" id="productPrice" name="productPrice"
+                        ngModel [(ngModel)]="selectedProduct.productPrice">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productOfferPrice">Offer Price</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productOfferPrice" name="productOfferPrice" ngModel
-                        [(ngModel)]="selectedProduct.productOfferPrice">
+                    <input autocomplete="off" type="text" class="form-control" id="productOfferPrice"
+                        name="productOfferPrice" ngModel [(ngModel)]="selectedProduct.productOfferPrice">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="shippingCost">Shipping Cost</label>
-                    <input autocomplete="off" type="text" class="form-control" id="shippingCost" name="shippingCost" ngModel
-                        [(ngModel)]="selectedProduct.shippingCost">
+                    <input autocomplete="off" type="text" class="form-control" id="shippingCost" name="shippingCost"
+                        ngModel [(ngModel)]="selectedProduct.shippingCost">
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="totalInventory">Inventory</label>
-                    <input autocomplete="off" type="text" class="form-control" id="totalInventory" name="totalInventory" ngModel
-                        [(ngModel)]="selectedProduct.totalInventory">
+                    <input autocomplete="off" type="text" class="form-control" id="totalInventory" name="totalInventory"
+                        ngModel [(ngModel)]="selectedProduct.totalInventory">
                 </div>
             </div>
             <div class="flex-fill pl-2">
-				<div class="upload-img-size" 
-				[ngStyle]="{'background-color' : (selectedProduct.images.length === 1) ? 'rgba(0, 0, 0, 0.2)' : '#fff'}">
+                <div class="upload-img-size"
+                    [ngStyle]="{'background-color' : (selectedProduct.images.length === 1) ? 'rgba(0, 0, 0, 0.2)' : '#fff'}">
                     <div *ngIf="selectedProduct.images.length === 1" (click)="uploadImage()" style="cursor:pointer">
-						<img src="https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg" alt=""
-						height="240px">
-					</div>
-					<div *ngIf="selectedProduct.images.length > 1">
-						<div class="d-flex align-items-center justify-content-center flex-wrap py-2">
-							<div class="p-1" *ngFor="let image of selectedProductImages">
-								<img src="{{image}}" alt="" height="60px" width="60px" (click)="onSelectImage(image)" style="cursor:pointer">
-							</div>
-							<div class="p-1">
-								<img src="https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg" alt=""
-									height="60px" width="60px" (click)="uploadImage()" style="cursor:pointer">
-							</div>
-						</div>
-					</div>
+                        <img src="https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg" alt=""
+                            height="240px">
+                    </div>
+                    <div *ngIf="selectedProduct.images.length > 1">
+                        <div class="d-flex align-items-center justify-content-center flex-wrap py-2">
+                            <div class="p-1" *ngFor="let image of selectedProductImages">
+                                <img src="{{image}}" alt="" height="60px" width="60px" (click)="onSelectImage(image)"
+                                    style="cursor:pointer">
+                            </div>
+                            <div class="p-1">
+                                <img src="https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg"
+                                    alt="" height="60px" width="60px" (click)="uploadImage()" style="cursor:pointer">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div style="height:300px;overflow-y:scroll">
                     <div *ngFor="let option of selectedProduct.options; let i=index">
                         <div class="form-group" style="margin-bottom:5px">
-                            <input autocomplete="off" type="text" class="form-control" id="optionName" name="name{{i}}" ngModel
-                                [(ngModel)]="option.optionName" placeholder="Give a Option name here">
+                            <input autocomplete="off" type="text" class="form-control" id="optionName" name="name{{i}}"
+                                ngModel [(ngModel)]="option.optionName" placeholder="Give a Option name here">
                             <div *ngFor="let optionValue of selectedProduct.options[i].optionValues; let j=index">
                                 <input autocomplete="off" type="text" class="form-control" id="optionValue{{j}}"
                                     name="{{i}}optionValue{{j}}" ngModel [(ngModel)]="optionValue[j]"
@@ -210,8 +210,8 @@
             <div class="flex-grow-1 pl-2">
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="mb-0" for="productDescription">Description</label>
-                    <input autocomplete="off" type="text" class="form-control" id="productDescription" name="productDescription" ngModel
-                        [(ngModel)]="selectedProduct.productDescription">
+                    <input autocomplete="off" type="text" class="form-control" id="productDescription"
+                        name="productDescription" ngModel [(ngModel)]="selectedProduct.productDescription">
                 </div>
             </div>
             <div class="px-2">
@@ -236,28 +236,29 @@
                 </button>
             </div>
         </div>
-	</form>
+    </form>
 </div>
 <div class="animate-left" *ngIf="addImage">
-	<form (ngSubmit)="onAddNewImage(f1)" #f1="ngForm">
-		<div class="p-2">
-			<div class="form-group" style="margin-bottom:5px;">
-				<label for="imageURL">Enter the Image Url</label>
-				<input autocomplete="off" type="text" class="form-control" id="imageURL" name="imageURL" ngModel required>
-			</div>
-			<div class="py-1" *ngIf="showError">
-				<p class="mb-0 text-danger" style="font-size:12px;">Please enter a valid Image URL</p>
-			</div>
-			<div class="py-2">
-				<div class="d-flex align-items-center justify-content-center">
-					<div class="px-2">
-						<button class="btn btn-secondary" (click)="uploadImage()">Cancel</button>
-					</div>
-					<div class="px-2">
-						<button class="btn btn-success">Add</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
+    <form (ngSubmit)="onAddNewImage(f1)" #f1="ngForm">
+        <div class="p-2">
+            <div class="form-group" style="margin-bottom:5px;">
+                <label for="imageURL">Enter the Image Url</label>
+                <input autocomplete="off" type="text" class="form-control" id="imageURL" name="imageURL" ngModel
+                    required>
+            </div>
+            <div class="py-1" *ngIf="showError">
+                <p class="mb-0 text-danger" style="font-size:12px;">Please enter a valid Image URL</p>
+            </div>
+            <div class="py-2">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="px-2">
+                        <button class="btn btn-secondary" (click)="uploadImage()">Cancel</button>
+                    </div>
+                    <div class="px-2">
+                        <button class="btn btn-success">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
