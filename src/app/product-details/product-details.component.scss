@@ -68,6 +68,13 @@ input:focus{
     .hover:hover{
         transform: scale(1.1);
     }
+    ngx-file-drop{
+        border:0;
+        background: transparent;
+    }
+    .height100{
+        height:100%;
+    }
 }
 
 .animate-left{

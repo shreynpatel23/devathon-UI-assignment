@@ -1,6 +1,8 @@
 import {
     Component,
-    OnInit
+    OnInit,
+	ViewChild,
+	ElementRef
 } from '@angular/core';
 import {
     ProductService
@@ -13,9 +15,7 @@ import {
 import {
     NgForm
 } from '@angular/forms';
-import {
-    THIS_EXPR
-} from '@angular/compiler/src/output/output_ast';
+import { NgxFileDropEntry, FileSystemDirectoryEntry, FileSystemFileEntry} from 'ngx-file-drop';
 
 @Component({
     selector: 'app-product-details',
@@ -23,7 +23,7 @@ import {
     styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
+	
     selectedProduct: Product;
     showProductDetails: boolean = false;
     products: Product[];
@@ -32,9 +32,10 @@ export class ProductDetailsComponent implements OnInit {
     showError: boolean = false;
     errorMessage: string;
     totalInventory = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-    constructor(private productService: ProductService) {}
+	files: NgxFileDropEntry[] = [];
+	constructor(private productService: ProductService) {}
     ngOnInit() {
+		
         this.productService.getData().subscribe(
             (data: any) => {
                 this.products = data.products;
@@ -45,7 +46,6 @@ export class ProductDetailsComponent implements OnInit {
 
     onSelectProduct(product: Product) {
 		this.selectedProduct = product;
-		console.log(this.selectedProduct)
         this.selectedProductImages = product.images.filter(image => image != this.selectedProduct.selectedImage);
         this.showProductDetails = !this.showProductDetails;
     }
@@ -74,7 +74,6 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     updateProductDetails(form: NgForm) {
-		console.log(this.selectedProduct);
         if (form.value.productTitle === '' || form.value.productTitle.length < 0) {
             this.showError = true;
 			this.errorMessage = 'PRODUCT TITLE CANNOT BE EMPTY';
@@ -137,6 +136,38 @@ export class ProductDetailsComponent implements OnInit {
     onSelectImage(image: string) {
         this.selectedProduct.selectedImage = image;
         this.selectedProductImages = this.selectedProduct.images.filter(image => image != this.selectedProduct.selectedImage);
-    }
+	}
+
+	dropped(files: NgxFileDropEntry[]) {
+		this.files = files;
+		for (const droppedFile of files) {
+	 
+		  // Is it a file?
+		  if (droppedFile.fileEntry.isFile) {
+			const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        	fileEntry.file((file: File) => {
+				var myReader: FileReader = new FileReader();
+
+				myReader.onloadend = (e) => {
+				let fileContent: string = myReader.result as string;;
+				this.selectedProduct.images.push(fileContent);
+            	this.selectedProductImages = this.selectedProduct.images.filter(image => image != this.selectedProduct.selectedImage);
+				}
+				myReader.readAsDataURL(file);
+			})
+			
+		  } else {
+			// It was a directory (empty directories are added, otherwise only files)
+			const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
+			
+		  }
+		}
+	  }
+	 
+	  public fileOver(event){
+	  }
+	 
+	  public fileLeave(event){
+	  }
 
 }
