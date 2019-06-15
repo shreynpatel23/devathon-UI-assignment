@@ -1,7 +1,87 @@
-#card-tile{
-    .wrapper{
-        width:250px;
+#card-tile {
+    .wrapper {
+        width: 250px;
         background: #fff;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
+
+    input:focus {
+        box-shadow: none;
+    }
+
+    .valid::-webkit-input-placeholder {
+        color: #aaaaaa;
+    }
+
+    .not-valid::-webkit-input-placeholder {
+        color: #ff0000;
+    }
+
+    .animate {
+        width: 530px;
+        padding:15px;
+        background-color: #fff;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        position: absolute;
+        z-index: 2;
+        transform: scale(1.05);
+        animation: Scale 0.4s ease-in;
+        
+        -webkit-animation: Scale 0.4s ease-in;
+
+        .image {
+            height: 240px;
+        }
+
+        .educational-text {
+            font-size: 12px;
+        }
+
+        .form-control {
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 0.5;
+            padding: 0 5px;
+            border-bottom: 1px solid #aaaaaa;
+        }
+
+        label {
+            font-size: 10px;
+            line-height: 0.5;
+            color: #aaaaaa;
+        }
+
+        .img-size {
+            width: 250px;
+            height: 240px;
+        }
+
+        .upload-img-size {
+            width: 100%;
+            height: 240px;
+            overflow-y: scroll;
+        }
+
+        .hover {
+            transition: transform 0.3s;
+        }
+
+        .hover:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+@keyframes Scale {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1.05);
     }
 }

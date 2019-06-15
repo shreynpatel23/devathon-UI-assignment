@@ -4,17 +4,7 @@
     }
 }
 
-input:focus{
-    box-shadow: none;
-}
 
-.valid::-webkit-input-placeholder {
-    color: #aaaaaa;
-}
-
-.not-valid::-webkit-input-placeholder {
-    color: #ff0000;
-}
 
 .animate {
     width: 530px;
@@ -67,13 +57,6 @@ input:focus{
     }
     .hover:hover{
         transform: scale(1.1);
-    }
-    ngx-file-drop{
-        border:0;
-        background: transparent;
-    }
-    .height100{
-        height:100%;
     }
 }
 
