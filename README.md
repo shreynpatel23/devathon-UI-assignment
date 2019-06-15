@@ -1,6 +1,9 @@
 # Assignment Video
 I have created a video of the assignment you can see the video by clicking on the link
 [video Link](https://github.com/shreynpatel23/devathon-UI-assignment/blob/master/DevathonUIAssignment.mp4)
+
+mobile view video link here
+[video link](https://github.com/shreynpatel23/devathon-UI-assignment/blob/master/mobile%20view.mp4)
 # DevathonUIAssignment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
